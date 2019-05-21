@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-# ssh-keygen -m PEM -f id -C root
-# cat /home/panhi_bc_edu/id.pub >> ~/.ssh/authorized_keys
 
-# ssh -i id -o StrictHostKeyChecking=no systopicsgroup3_gmail_com@34.73.189.158
+
 mkdir -p ~/.ssh/
 cat id.pub >> ~/.ssh/authorized_keys
 rm id.pub
 rm setup.sh
-
-#echo "alias mme='cd ~/mininet/mininet/examples/'" >> ~/.bashrc
-#echo "alias sp='sudo python'" >> ~/.bashrc
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install build-essential linux-headers-$(uname -r) -y
@@ -60,9 +55,6 @@ install_ycsb
 
 # mv ../home/panhi_bc_edu/id.pub ../home/panhi_bc_edu/setup.sh ./
 
-
-# mn --link tc,bw=10,delay=1ms  # ping says lat is 4 ms
-# h1 redis-server --daemonize yes --protected-mode no
 # h1 redis-cli -n 0 ping
 # h2 redis-cli -h 10.0.0.1 -n 0 ping
 
@@ -71,4 +63,3 @@ install_ycsb
 # h2 ./bin/ycsb run  redis -s -P workloads/workloada -p "redis.host=10.0.0.1 " -p "redis.port=6379" -p recordcount=1000000 -p operationcount=1000000 >> outputLoad.txt
 
 
-#  mn --clean && killall redis-server && ps -fe | grep redis
