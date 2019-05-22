@@ -1,6 +1,6 @@
 ## local environment for IDEA (streamline uploading)
 
-> Important: The below ip does not work. The newest ip see  External Ip on GCP
+> Important: The below ip may not work. The newest ip see  External Ip on GCP
 
 In IDEA, config the following, so that you can use Tool -> Deployment and Tool -> Start SSH Session
 
