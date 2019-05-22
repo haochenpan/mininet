@@ -4,11 +4,11 @@
 
 In IDEA, config the following, so that you can use Tool -> Deployment and Tool -> Start SSH Session
 
-![]("./readme/d1")
+![](misc/d1.png)
 
-![]("./readme/d2")
+![](misc/d2.png)
 
-![]("./readme/d3")
+![](misc/d3.png)
 
 Therefore, every time we move the mouse out of the editor, a File Transfer window should say the changed file has been uploaded and so it replaces the remote original file.
 
