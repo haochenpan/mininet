@@ -60,7 +60,7 @@ def startMini():
     net.start()
     net.pingAll()
 
-    # change network interface cards' names
+    # change network interface cards' names to suit cassandra.yaml
     hs = [net.get('h{0}'.format(i + 1)) for i in range(5)]
     for i in range(5):
         hs[i].intf('h{0}-eth0'.format(i + 1)).rename('eth0')
@@ -78,8 +78,10 @@ def startCass(hs):
     """
     print "starting 5 cass instances, may take a while..."
     for i in range(5):
+        # if not redirect output, cass may stuck at bootstrap
         hs[i].cmd("~/cassandra/bin/cassandra -R &>/dev/null")
         sleep(short_sleep)
+        print "cass node %s is alive" % (i + 1)
     print "wait the system to stabilize..."
     sleep(long_sleep)
     o1 = hs[0].cmdPrint("~/cassandra/bin/nodetool status")
@@ -92,8 +94,10 @@ def startCass(hs):
     if '-l' in argv or '--load' in argv:
         print "num of nodes joined: ", o1.count("UN")
         if o1.count("UN") == 5:
-            hs[0].cmd(". ~/cassandra/load.sh")
+            hs[0].cmd(". ~/mgmt/load.sh")
             hs[0].cmdPrint('~/cassandra/bin/cqlsh 10.0.0.1 -e "describe ycsb.usertable"')
+            hs[0].cmdPrint("~/cassandra/bin/nodetool status")
+
         else:
             print "Not enough servers joined, please try manually"
 
@@ -130,4 +134,3 @@ if __name__ == '__main__':
     else:
         print "switches are: ", argv[1:]
         main()
-

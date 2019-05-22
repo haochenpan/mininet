@@ -42,7 +42,7 @@ def perfTest():
         # hn.cmdPrint(start_redis.format(hostPort))
         # h1.cmdPrint("redis-cli -h 10.0.0.{0} -p {1} -n 0 ping".format(hostNum, hostPort))
         # h1.cmdPrint("cd ~/ycsb-0.15.0")
-        h1.cmdPrint("ping 10.0.0.{0} -c 30 > h{0}.ping".format(hostNum))
+        # h1.cmdPrint("ping 10.0.0.{0} -c 30 > h{0}.ping".format(hostNum))
         # h1.cmdPrint(load_ycsb.format(hostNum, hostPort, recordcount, operationcount))
         # h1.cmdPrint(run_ycsb.format(hostNum, hostPort, recordcount, operationcount))
 
