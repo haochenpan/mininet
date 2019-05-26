@@ -8,11 +8,13 @@ In IDEA, config the following, so that you can use Tool -> Deployment and Tool -
 
 ![](misc/d2.png)
 
+The below is not modified, just FYI
+
 ![](misc/d3.png)
 
 Therefore, every time we move the mouse out of the editor, a File Transfer window should say the changed file has been uploaded and so it replaces the remote original file.
 
-How to verify? `git status` or `ant build` or `python topo_cass.py -b` (see the next seciton) to see whether the change has been reflected
+How to verify? `git status` or `ant build` or `python topo_cass.py -b` (see the next seciton) to see whether the change has been reflected.
 
 
 ## firing up Cassandra (streamline debugging)

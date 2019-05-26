@@ -48,7 +48,7 @@ function install_cass() {
     cd
     git clone https://github.com/yingjianwu199868/cassandra.git
     cd cassandra
-    git checkout 0d464cd25ffbb5734f96c3082f9cc35011de3667
+    git checkout treasOpt
     ant build
     cp -f ~/cassandra.yaml ~/cassandra/conf
     rm ~/cassandra.yaml

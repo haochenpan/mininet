@@ -20,7 +20,7 @@ operationcount = 1000000
 # operationcount = 10000
 
 master_ip = "10.0.0.2"
-master_port = 6379
+port = 6379
 
 start_redis = 'redis-server --daemonize yes --protected-mode no --save "" --port {0}'
 start_redis_slave = 'redis-server --daemonize yes --protected-mode no --save "" --port {0} --slaveof {1} {2}'
@@ -59,13 +59,13 @@ def startMini():
 def startRedis(hs):
     print "starting 3 Redis instances, may take a while..."
     hs[1].cmd(start_redis.format(6379))
-    hs[2].cmd(start_redis_slave.format(6380, master_ip, master_port))
-    # hs[3].cmd(start_redis_slave.format(6381, master_ip, master_port))
+    hs[2].cmd(start_redis_slave.format(port, master_ip, port))
+    hs[3].cmd(start_redis_slave.format(port, master_ip, port))
 
 
 def cleanUp():
     system("killall redis-server")  # kill Cassandra threads
-    system("mn --clean")  # perform Mininet clean
+    # system("mn --clean")  # perform Mininet clean
 
 
 def main():
@@ -82,8 +82,8 @@ def main():
 
     if '-e' in argv or '--eval' in argv:
         hs[0].cmd("cd ~/ycsb-0.15.0")
-        hs[0].cmdPrint(load_ycsb.format(master_ip, master_port, recordcount, operationcount))
-        hs[0].cmdPrint(runs_ycsb.format(master_ip, master_port, recordcount, operationcount, "data_redis"))
+        hs[0].cmdPrint(load_ycsb.format(master_ip, port, recordcount, operationcount))
+        hs[0].cmdPrint(runs_ycsb.format(master_ip, port, recordcount, operationcount, "data_redis"))
     else:
         CLI(net)
 

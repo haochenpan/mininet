@@ -134,3 +134,7 @@ if __name__ == '__main__':
     else:
         print "switches are: ", argv[1:]
         main()
+
+
+# ~/cassandra/bin/nodetool --host 10.0.0.1
+# ~/cassandra/bin/cqlsh 10.0.0.1
