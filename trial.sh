@@ -11,16 +11,18 @@ hosts=10.0.0.1,10.0.0.2,10.0.0.3,10.0.0.4,10.0.0.5
 #load_write_cl=ALL
 #run_read_cl=ONE
 #run_write_cl=ONE
-load_read_cl=QUORUM
-load_write_cl=QUORUM
-run_read_cl=QUORUM
-run_write_cl=QUORUM
+load_read_cl=ALL
+load_write_cl=ALL
+run_read_cl=ALL
+run_write_cl=ALL
 
-num_of_clients=1
+num_of_clients=3
+row_cnt=600  # in total
+ops_cnt=30000 # per client
 #row_cnt=60000  # in total
-#ops_cnt=300000  # per client
-row_cnt=6000  # in total
-ops_cnt=30000  # per client
+#ops_cnt=3000000  # per client
+#row_cnt=70000 # in total
+#ops_cnt=300000 # per client
 field_count=1
 thread_index=$1
 thread_count=$2  # thread count per client
@@ -63,7 +65,7 @@ case $run_switch in
   -p recordcount=$row_cnt -p operationcount=$ops_cnt \
   -p hosts=$hosts -p fieldcount=$field_count -p fieldlength=$field_length \
   -threads $thread_count \
-  -s >> ~/data_t${thread_count}_r${read_portion}_s${field_length}.txt
+  -s >> ~/mgmt/data/data_cass_t${thread_count}_r${read_portion}_s${field_length}.txt
   ;;
   *)
   echo "invalid run_switch $run_switch"
