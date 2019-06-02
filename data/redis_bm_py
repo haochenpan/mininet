@@ -1,0 +1,55 @@
+***************************************************
+record_count,          10000
+operation_count,       1000000
+read_proportion,       0.5
+field_length_in_bytes, 100
+[OVERALL], RunTime(s), 117.93031621
+[OVERALL], Throughput(ops/sec), 8479.58380965
+[READ], Operations, 500352
+[READ], AverageLatency(us), 83.386693145
+[UPDATE], Operations, 499648
+[UPDATE], AverageLatency(us),  94.2401197636
+***************************************************
+record_count,          10000
+operation_count,       1000000
+read_proportion,       0.5
+field_length_in_bytes, 100
+[OVERALL], RunTime(s), 119.997311115
+[OVERALL], Throughput(ops/sec), 8333.52006562
+[READ], Operations, 500141
+[READ], AverageLatency(us), 85.49646409
+[UPDATE], Operations, 499859
+[UPDATE], AverageLatency(us),  96.268437315
+***************************************************
+record_count,          10000
+operation_count,       1000000
+read_proportion,       0.5
+field_length_in_bytes, 100
+[OVERALL], RunTime(s), 125.186495066
+[OVERALL], Throughput(ops/sec), 7988.08209684
+[READ], Operations, 500933
+[READ], AverageLatency(us), 90.3420171177
+[UPDATE], Operations, 499067
+[UPDATE], AverageLatency(us),  101.220785544
+***************************************************
+record_count,          10000
+operation_count,       1000000
+read_proportion,       0.5
+field_length_in_bytes, 100
+[OVERALL], RunTime(s), 117.356982946
+[OVERALL], Throughput(ops/sec), 8521.00978479
+[READ], Operations, 500339
+[READ], AverageLatency(us), 83.2282163499
+[UPDATE], Operations, 499661
+[UPDATE], AverageLatency(us),  93.79840758
+***************************************************
+record_count,          10000
+operation_count,       1000000
+read_proportion,       0.5
+field_length_in_bytes, 100
+[OVERALL], RunTime(s), 124.668903112
+[OVERALL], Throughput(ops/sec), 8021.24647795
+[READ], Operations, 499661
+[READ], AverageLatency(us), 89.9683724617
+[UPDATE], Operations, 500339
+[UPDATE], AverageLatency(us),  100.71621167

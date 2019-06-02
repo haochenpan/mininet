@@ -45,10 +45,12 @@ function install_ycsb() {
 }
 
 function install_cass() {
+    sudo apt-get install yasm -y  # yasm for Kishori's library
     cd
-    git clone https://github.com/yingjianwu199868/cassandra.git
+    git clone https://github.com/kishori82/JavaISal.git
+    git clone https://github.com/haochenpan/cassandra.git
     cd cassandra
-    git checkout treasOpt
+    git checkout 0d464cd25ffbb5734f96c3082f9cc35011de3667
     ant build
     cp -f ~/cassandra.yaml ~/cassandra/conf
     rm ~/cassandra.yaml
@@ -58,9 +60,13 @@ function install_cass() {
 
 install_dependencies
 install_mininet
-install_redis
-install_ycsb
-install_cass
+#install_redis
+#install_ycsb
+#install_cass
 
-# mv ../home/panhi_bc_edu/id.pub ../home/panhi_bc_edu/setup.sh ../home/panhi_bc_edu/cassandra.yaml ./
+#sudo su
+#mv * ~
+#cd
 # cp ./cassandra.yaml ~/cassandra/conf/
+
+ssh -X -i ~/Desktop/mininet/init/id root@35.237.65.237

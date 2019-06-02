@@ -108,7 +108,34 @@ Tool -> Deployment
 
 Right click a folder/file -> Deployment
 
-### Notes
+### Notes on Kishori's Library
+
+Right now, `setup.sh` only clones his library to the machine.
+On May 29th, I did the following to let `make test` works:
+```
+# now it is in `setup.sh`
+apt-get install yasm -y
+
+cd
+
+# now it is in `setup.sh`
+git clone https://github.com/kishori82/JavaISal.git 
+
+cd JavaISal
+make -f Makefile.unx
+cd javaexample
+vim Makefile
+# line 19: add -std=c99 after gcc
+# line 20: add -std=c99 after gcc
+# make clean <- a useful command :)
+make
+make test
+
+
+```
+ 
+
+### Other Notes
 
 now we do `ssh-keygen -m PEM -f id -C root` on MacOS to generate SSH keys
 
