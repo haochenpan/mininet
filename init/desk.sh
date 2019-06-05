@@ -50,7 +50,7 @@ install_mininet() {
     cd
 }
 
-function install_redis() {
+install_redis() {
     cd
     wget http://download.redis.io/redis-stable.tar.gz
     tar xvzf redis-stable.tar.gz
@@ -62,14 +62,14 @@ function install_redis() {
     rm redis-stable.tar.gz
 }
 
-function install_ycsb() {
+install_ycsb() {
     cd
     curl -O --location https://github.com/brianfrankcooper/YCSB/releases/download/0.15.0/ycsb-0.15.0.tar.gz
     tar xfvz ycsb-0.15.0.tar.gz
     rm -rf ycsb-0.15.0.tar.gz
 }
 
-function install_cass() {
+install_cass() {
     sudo apt-get install yasm -y  # yasm for Kishori's library
     cd
     git clone https://github.com/kishori82/JavaISal.git
@@ -83,29 +83,89 @@ function install_cass() {
     cd
 }
 
+install_pycharm() {
+# https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux
+# https://www.lifewire.com/how-to-install-the-pycharm-python-ide-in-linux-4091033
+    cd
+    wget https://download-cf.jetbrains.com/python/pycharm-professional-2019.1.3.tar.gz
+    tar xfz pycharm-professional-2019.1.3.tar.gz
+    rm pycharm-professional-2019.1.3.tar.gz
+}
+
+install_bazel() {
+# https://docs.bazel.build/versions/master/install-ubuntu.html
+    cd
+    wget https://github.com/bazelbuild/bazel/releases/download/0.26.0/bazel-0.26.0-installer-linux-x86_64.sh
+    chmod +x bazel-0.26.0-installer-linux-x86_64.sh
+    ./bazel-0.26.0-installer-linux-x86_64.sh --user
+    rm bazel-0.26.0-installer-linux-x86_64.sh
+    echo 'export PATH=$PATH:~/bin' >> ~/.bashrc
+    source ~/.bashrc
+}
+
+install_onos() {
+    cd
+    git clone https://github.com/opennetworkinglab/onos.git
+    cd onos
+    git checkout onos-2.1
+    bazel build onos
+    cd
+
+    # https://wiki.onosproject.org/display/ONOS/Downloads
+    cd /opt
+    ONOS_VERSION=2.1.0
+    sudo wget http://repo1.maven.org/maven2/org/onosproject/onos-releases/2.1.0/onos-2.1.0.tar.gz
+    sudo tar xzf onos-$ONOS_VERSION.tar.gz
+    sudo mv onos-$ONOS_VERSION onos
+
+}
 
 #key=id.pub
-requires "$key" && copy_key
+#requires "$key" && copy_key
 
-install_java
-install_basic
+#install_java
+#install_basic
 
 key=xstartup
 requires "$key" && install_vnc
-install_dpkg
-install_mininet
-install_redis
-install_ycsb
+#install_dpkg
 
-key=cassandra.yaml
-requires "$key" && install_cass
+#install_bazel
+#install_mininet
+#install_redis
+
+#install_ycsb
+
+#key=cassandra.yaml
+#requires "$key" && install_cass
 
 # vncserver -geometry 1920x1080
 # vncserver -geometry 3440x1440
+# vncserver -geometry 1720x1440
 # wireshark-gtk
 # vncserver -kill :1
 
 
-# https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=linux
-# https://www.lifewire.com/how-to-install-the-pycharm-python-ide-in-linux-4091033
-# export PATH="/root/pycharm-2019.1.3/bin:$PATH"
+
+#git clone https://github.com/haochenpan/mininet-mgmt.git
+
+
+
+#git clone https://gerrit.onosproject.org/onos
+
+
+# https://wiki.onosproject.org/display/ONOS/Installing+on+a+single+machine
+# https://wiki.onosproject.org/display/ONOS/Downloads
+
+# https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+# https://askubuntu.com/questions/56104/how-can-i-install-sun-oracles-proprietary-java-jdk-6-7-8-or-jre
+#wget https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-linux-x64.tar.gz?AuthParam=1559609241_f178508d4fdb6992052d4181625d5367
+#mv jdk-8u211-linux-x64.tar.gz\?AuthParam\=1559609241_f178508d4fdb6992052d4181625d5367  jdk-8u211-linux-x64.tar.gz
+
+#echo 'export PATH=$PATH:/usr/lib/jvm/jdk1.8.0_211/bin' >> ~/.bashrc
+
+#echo 'export ONOS_ROOT=/home/panhi_bc_edu/onos' >> ~/.bashrc
+#source ~/onos/tools/dev/bash_profile
+
+
+#echo 'export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_211/' >> ~/.bashrc
