@@ -119,6 +119,7 @@ install_onos() {
     sudo mv onos-$ONOS_VERSION onos
 
 }
+# Java -> linux -> dpkg -> bazel -> onos -> vnc -> everything else
 
 #key=id.pub
 #requires "$key" && copy_key
@@ -169,3 +170,6 @@ requires "$key" && install_vnc
 
 
 #echo 'export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_211/' >> ~/.bashrc
+
+# /opt/onos/bin/onos-service start
+# http://35.237.65.237:8181/onos/ui/login.html
