@@ -14,7 +14,7 @@ from mininet.cli import CLI
 short_sleep = 2
 long_sleep = 10
 
-ycsb_file_path = "~/mgmt/data_redis.txt"
+ycsb_file_path = "~/data_redis.txt"
 num_of_hosts = 5
 
 recordcount = 20000
