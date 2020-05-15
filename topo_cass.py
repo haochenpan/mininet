@@ -68,13 +68,13 @@ def startCass(hs):
     :param hs: a list of hosts
     :return:
     """
-    print "starting cass instances, may take a while..."
+    print("starting cass instances, may take a while...")
     for i in range(num_of_cass):
         # if not redirect output, cass may stuck at bootstrap
         hs[i].cmd("~/cassandra/bin/cassandra -R &>/dev/null")
         sleep(short_sleep)
-        print "cass node %s is alive" % (i + 1)
-    print "wait the system to stabilize..."
+        print("cass node %s is alive" % (i + 1))
+    print("wait the system to stabilize...")
     sleep(long_sleep)
     o1 = hs[0].cmdPrint("~/cassandra/bin/nodetool status")
 
@@ -84,14 +84,14 @@ def startCass(hs):
 
     # if want to load table:
     if '-l' in argv or '--load' in argv:
-        print "num of nodes joined: ", o1.count("UN")
+        print("num of nodes joined: ", o1.count("UN"))
         if o1.count("UN") == num_of_cass:
             hs[0].cmd(". ~/mgmt/load.sh")
             hs[0].cmdPrint('~/cassandra/bin/cqlsh 10.0.0.1 -e "describe ycsb.usertable"')
             hs[0].cmdPrint("~/cassandra/bin/nodetool status")
 
         else:
-            print "Not enough servers joined, please try manually"
+            print("Not enough servers joined, please try manually")
 
 
 def evalCass(hs):
@@ -169,7 +169,8 @@ def clean():
     if '-b' in argv or '--build' in argv:
         system("ant build -f ~/cassandra/build.xml")
     else:
-        print "wait the system to stabilize..."
+        print
+        "wait the system to stabilize..."
         sleep(short_sleep)
 
 
@@ -196,7 +197,7 @@ def main():
 
 if __name__ == '__main__':
     if len(argv) == 1 or ('-h' in argv or '--help' in argv):
-        print """
+        print("""
         usage: python topo_cass.py -h                or --help
                python topo_cass.py -c                or --clean
                python topo_cass.py -t -s             or --topo --start
@@ -214,10 +215,10 @@ if __name__ == '__main__':
             -l or --load  : try to load ycsb.usertable (use ~/cassandra/load.sh)
             -s or --start : start 5 cassandra nodes
             -t or --topo  : build a Mininet topology of 5 hosts and 1 switch
-              """
+              """)
     else:
         system("clear")
-        print "switches are: ", argv[1:]
+        print("switches are: ", argv[1:])
         main()
 
 # ~/cassandra/bin/nodetool --host 10.0.0.1
